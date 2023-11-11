@@ -4,10 +4,16 @@
     "config:best-practices",
     ":label(renovate)",
     ":timezone(Asia/Tokyo)",
-    ":enableVulnerabilityAlertsWithLabel(security)",
+    "security:openssf-scorecard",
     "schedule:weekly",
   ],
   ignorePresets: ["helpers:pinGitHubActionDigests"],
+  vulnerabilityAlerts: {
+    labels: ["security"],
+    automerge: true,
+  },
+  dependencyDashboardOSVVulnerabilitySummary: "all",
+  osvVulnerabilityAlerts: true,
   packageRules: [
     // GitHub Actions
     {
