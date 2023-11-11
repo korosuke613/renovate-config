@@ -1,0 +1,29 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:best-practices",
+    ":label(renovate)",
+    ":timezone(Asia/Tokyo)",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    "schedule:weekly",
+  ],
+  ignorePresets: ["helpers:pinGitHubActionDigests"],
+  packageRules: [
+    // GitHub Actions
+    {
+      // 3rd party action の digest を固定する
+      matchDepTypes: ["action"],
+      excludePackagePrefixes: ["actions/", "korosuke613/", "cybozu/"],
+      pinDigests: true,
+    },
+
+    // npm
+    {
+      // devDependencies は自動更新する
+      matchManagers: ["npm"],
+      matchDepTypes: ["devDependencies"],
+      semanticCommitScope: "deps-dev",
+      automerge: true,
+    },
+  ],
+}
