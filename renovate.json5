@@ -25,5 +25,19 @@
       semanticCommitScope: "deps-dev",
       automerge: true,
     },
+    {
+      // linter はプルリクエストをまとめる
+      matchManagers: ["npm"],
+      matchDepTypes: ["devDependencies"],
+      matchPackagePatterns: [
+        "^eslint",
+        "^eslint-*",
+        "^@typescript-eslint/*",
+        "^prettier",
+        "^prettier-*",
+      ],
+      groupName: "npm-linters",
+      automerge: true,
+    },
   ],
 }
