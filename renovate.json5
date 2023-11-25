@@ -38,6 +38,7 @@
       matchPackagePatterns: ["^@types/*"],
       semanticCommitScope: "deps-dev",
       automerge: true,
+      groupName: "npm-types",
     },
     {
       // linter はプルリクエストをまとめる
