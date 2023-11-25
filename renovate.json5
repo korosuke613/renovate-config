@@ -32,6 +32,14 @@
       automerge: true,
     },
     {
+      // @types はプルリクエストをまとめる
+      matchManagers: ["npm"],
+      matchDepTypes: ["devDependencies"],
+      matchPackagePatterns: ["^@types/*"],
+      semanticCommitScope: "deps-dev",
+      automerge: true,
+    },
+    {
       // linter はプルリクエストをまとめる
       matchManagers: ["npm"],
       matchDepTypes: ["devDependencies"],
