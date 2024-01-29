@@ -12,8 +12,9 @@
     labels: ["security"],
     automerge: true,
   },
-  dependencyDashboardOSVVulnerabilitySummary: "all",
-  osvVulnerabilityAlerts: true,
+  // osv 関連は 401 エラーが出るため無効化中
+  // dependencyDashboardOSVVulnerabilitySummary: "all",
+  // osvVulnerabilityAlerts: true,
   packageRules: [
     // GitHub Actions
     {
