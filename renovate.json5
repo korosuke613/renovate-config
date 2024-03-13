@@ -12,6 +12,7 @@
     labels: ["security"],
     automerge: true,
   },
+  configMigration: true,
   // osv 関連は 401 エラーが出るため無効化中
   // dependencyDashboardOSVVulnerabilitySummary: "all",
   // osvVulnerabilityAlerts: true,
