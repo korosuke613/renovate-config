@@ -10,8 +10,9 @@
   ignorePresets: ["helpers:pinGitHubActionDigests"],
   vulnerabilityAlerts: {
     labels: ["security"],
-    automerge: true,
+    automerge: false,
   },
+  minimumReleaseAge: "7 days",
   configMigration: true,
   // osv 関連は 401 エラーが出るため無効化中
   // dependencyDashboardOSVVulnerabilitySummary: "all",
