@@ -14,9 +14,6 @@
   },
   minimumReleaseAge: "7 days",
   configMigration: true,
-  // osv 関連は 401 エラーが出るため無効化中
-  // dependencyDashboardOSVVulnerabilitySummary: "all",
-  // osvVulnerabilityAlerts: true,
   packageRules: [
     // GitHub Actions
     {
@@ -55,6 +52,14 @@
         "^prettier-*",
       ],
       groupName: "npm-linters",
+      automerge: true,
+    },
+
+    // node
+    {
+      // Node.js のマイナー、パッチリリースは自動更新する
+      matchManagers: ["nodenv"],
+      matchUpdateTypes: ["minor", "patch"],
       automerge: true,
     },
   ],
