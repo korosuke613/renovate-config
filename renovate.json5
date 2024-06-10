@@ -41,11 +41,17 @@
       groupName: "npm-types",
     },
     {
+      // eslint v9 は他のパッケージと相性が悪いので当分更新しない
+      matchPackageNames: ["eslint"],
+      allowedVersions: "<9.0.0",
+      groupName: "npm-linters",
+      automerge: true
+    },
+    {
       // linter はプルリクエストをまとめる
       matchManagers: ["npm"],
       matchDepTypes: ["devDependencies"],
       matchPackagePatterns: [
-        "^eslint",
         "^eslint-*",
         "^@typescript-eslint/*",
         "^prettier",
