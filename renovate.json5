@@ -62,6 +62,14 @@
       matchUpdateTypes: ["minor", "patch"],
       automerge: true,
     },
+    {
+      // asdf
+      matchManagers: ["asdf"],
+      matchDatasources: ["node-version"],
+      matchDepNames: ["node"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
+    },
 
     // npm version
     {
