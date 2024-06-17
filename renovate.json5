@@ -62,5 +62,14 @@
       matchUpdateTypes: ["minor", "patch"],
       automerge: true,
     },
+
+    // npm version
+    {
+      // npm version のマイナー、パッチリリースは自動更新する
+      matchManagers: ["npm"],
+      matchDepTypes: ["packageManager"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
+    },
   ],
 }
