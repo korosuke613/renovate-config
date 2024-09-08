@@ -5,7 +5,7 @@
     ":label(renovate)",
     ":timezone(Asia/Tokyo)",
     "security:openssf-scorecard",
-    "schedule:weekly",
+    "schedule:monthly",
   ],
   ignorePresets: ["helpers:pinGitHubActionDigests"],
   vulnerabilityAlerts: {
