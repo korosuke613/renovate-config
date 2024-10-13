@@ -1,82 +1,122 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
-    "config:best-practices",
-    ":label(renovate)",
-    ":timezone(Asia/Tokyo)",
-    "security:openssf-scorecard",
-    "schedule:monthly",
+    'config:best-practices',
+    ':label(renovate)',
+    ':timezone(Asia/Tokyo)',
+    'security:openssf-scorecard',
+    'schedule:monthly',
   ],
-  ignorePresets: ["helpers:pinGitHubActionDigests"],
+  ignorePresets: [
+    'helpers:pinGitHubActionDigests',
+  ],
   vulnerabilityAlerts: {
-    labels: ["security"],
+    labels: [
+      'security',
+    ],
     automerge: false,
   },
-  minimumReleaseAge: "7 days",
+  minimumReleaseAge: '7 days',
   configMigration: true,
   packageRules: [
-    // GitHub Actions
     {
       // 3rd party action の digest を固定する
-      matchDepTypes: ["action"],
-      excludePackagePrefixes: ["actions/", "korosuke613/", "cybozu/"],
+      matchDepTypes: [
+        'action',
+      ],
       pinDigests: true,
+      matchPackageNames: [
+        '!actions/{/,}**',
+        '!korosuke613/{/,}**',
+        '!cybozu/{/,}**',
+      ],
     },
-
     // npm
     {
       // devDependencies は自動更新する
-      matchManagers: ["npm"],
-      matchDepTypes: ["devDependencies"],
-      semanticCommitScope: "deps-dev",
+      matchManagers: [
+        'npm',
+      ],
+      matchDepTypes: [
+        'devDependencies',
+      ],
+      semanticCommitScope: 'deps-dev',
       automerge: true,
     },
     {
       // @types はプルリクエストをまとめる
-      matchManagers: ["npm"],
-      matchDepTypes: ["devDependencies"],
-      matchPackagePatterns: ["^@types/*"],
-      semanticCommitScope: "deps-dev",
+      matchManagers: [
+        'npm',
+      ],
+      matchDepTypes: [
+        'devDependencies',
+      ],
+      semanticCommitScope: 'deps-dev',
       automerge: true,
-      groupName: "npm-types",
+      groupName: 'npm-types',
+      matchPackageNames: [
+        '/^@types/*/',
+      ],
     },
     {
       // linter はプルリクエストをまとめる
-      matchManagers: ["npm"],
-      matchDepTypes: ["devDependencies"],
-      matchPackagePatterns: [
-        "^eslint",
-        "^eslint-*",
-        "^@typescript-eslint/*",
-        "^prettier",
-        "^prettier-*",
+      matchManagers: [
+        'npm',
       ],
-      groupName: "npm-linters",
+      matchDepTypes: [
+        'devDependencies',
+      ],
+      groupName: 'npm-linters',
       automerge: true,
+      matchPackageNames: [
+        '/^eslint/',
+        '/^eslint-*/',
+        '/^@typescript-eslint/*/',
+        '/^prettier/',
+        '/^prettier-*/',
+      ],
     },
-
     // node
     {
       // Node.js のマイナー、パッチリリースは自動更新する
-      matchManagers: ["nodenv"],
-      matchUpdateTypes: ["minor", "patch"],
+      matchManagers: [
+        'nodenv',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
       automerge: true,
     },
     {
       // asdf
-      matchManagers: ["asdf"],
-      matchDatasources: ["node-version"],
-      matchDepNames: ["node"],
-      matchUpdateTypes: ["minor", "patch"],
+      matchManagers: [
+        'asdf',
+      ],
+      matchDatasources: [
+        'node-version',
+      ],
+      matchDepNames: [
+        'node',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
       automerge: true,
     },
-
-    // npm version
     {
       // npm version のマイナー、パッチリリースは自動更新する
-      matchManagers: ["npm"],
-      matchDepTypes: ["packageManager"],
-      matchUpdateTypes: ["minor", "patch"],
+      matchManagers: [
+        'npm',
+      ],
+      matchDepTypes: [
+        'packageManager',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
       automerge: true,
     },
   ],
