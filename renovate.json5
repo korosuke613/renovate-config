@@ -20,6 +20,7 @@
   configMigration: true,
   packageRules: [
     {
+      // 3rd party action の digest を固定する
       matchDepTypes: [
         'action',
       ],
@@ -30,7 +31,9 @@
         '!cybozu/{/,}**',
       ],
     },
+    // npm
     {
+      // devDependencies は自動更新する
       matchManagers: [
         'npm',
       ],
@@ -41,6 +44,7 @@
       automerge: true,
     },
     {
+      // @types はプルリクエストをまとめる
       matchManagers: [
         'npm',
       ],
@@ -55,6 +59,7 @@
       ],
     },
     {
+      // linter はプルリクエストをまとめる
       matchManagers: [
         'npm',
       ],
@@ -71,7 +76,9 @@
         '/^prettier-*/',
       ],
     },
+    // node
     {
+      // Node.js のマイナー、パッチリリースは自動更新する
       matchManagers: [
         'nodenv',
       ],
@@ -82,6 +89,7 @@
       automerge: true,
     },
     {
+      // asdf
       matchManagers: [
         'asdf',
       ],
@@ -98,6 +106,7 @@
       automerge: true,
     },
     {
+      // npm version のマイナー、パッチリリースは自動更新する
       matchManagers: [
         'npm',
       ],
