@@ -32,5 +32,5 @@ jobs:
         run: |
           echo "## Renovate Dry Run Logs" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`log" >> $GITHUB_STEP_SUMMARY
-          cat renovate.log >> $GITHUB_STEP_SUMMARY
+          cat ${{ runner.temp }}/renovate.log >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
