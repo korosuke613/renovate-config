@@ -1,35 +1,35 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: [
-    'config:best-practices',
-    ':label(renovate)',
-    ':timezone(Asia/Tokyo)',
-    'schedule:monthly',
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    ":label(renovate)",
+    ":timezone(Asia/Tokyo)",
+    "schedule:monthly"
   ],
-  ignorePresets: [
-    'helpers:pinGitHubActionDigests',
+  "ignorePresets": [
+    "helpers:pinGitHubActionDigests"
   ],
-  vulnerabilityAlerts: {
-    labels: [
-      'security',
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
     ],
-    automerge: false,
+    "automerge": false
   },
-  minimumReleaseAge: '14 days',
-  configMigration: true,
+  "minimumReleaseAge": "14 days",
+  "configMigration": true,
 
-  packageRules: [
+  "packageRules": [
     {
       // 3rd party action の digest を固定する
-      matchDepTypes: [
-        'action',
+      "matchDepTypes": [
+        "action"
       ],
-      pinDigests: true,
-      matchPackageNames: [
-        '!actions/{/,}**',
-        '!korosuke613/{/,}**',
-        '!cybozu/{/,}**',
-      ],
-    },
-  ],
+      "pinDigests": true,
+      "matchPackageNames": [
+        "!actions/{/,}**",
+        "!korosuke613/{/,}**",
+        "!cybozu/{/,}**"
+      ]
+    }
+  ]
 }
