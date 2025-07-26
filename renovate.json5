@@ -4,7 +4,6 @@
     'config:best-practices',
     ':label(renovate)',
     ':timezone(Asia/Tokyo)',
-    'security:openssf-scorecard',
     'schedule:monthly',
   ],
   ignorePresets: [
@@ -16,8 +15,9 @@
     ],
     automerge: false,
   },
-  minimumReleaseAge: '7 days',
+  minimumReleaseAge: '14 days',
   configMigration: true,
+
   packageRules: [
     {
       // 3rd party action の digest を固定する
@@ -30,94 +30,6 @@
         '!korosuke613/{/,}**',
         '!cybozu/{/,}**',
       ],
-    },
-    // npm
-    {
-      // devDependencies は自動更新する
-      matchManagers: [
-        'npm',
-      ],
-      matchDepTypes: [
-        'devDependencies',
-      ],
-      semanticCommitScope: 'deps-dev',
-      automerge: true,
-    },
-    {
-      // @types はプルリクエストをまとめる
-      matchManagers: [
-        'npm',
-      ],
-      matchDepTypes: [
-        'devDependencies',
-      ],
-      semanticCommitScope: 'deps-dev',
-      automerge: true,
-      groupName: 'npm-types',
-      matchPackageNames: [
-        '/^@types/*/',
-      ],
-    },
-    {
-      // linter はプルリクエストをまとめる
-      matchManagers: [
-        'npm',
-      ],
-      matchDepTypes: [
-        'devDependencies',
-      ],
-      groupName: 'npm-linters',
-      automerge: true,
-      matchPackageNames: [
-        '/^eslint/',
-        '/^eslint-*/',
-        '/^@typescript-eslint/*/',
-        '/^prettier/',
-        '/^prettier-*/',
-      ],
-    },
-    // node
-    {
-      // Node.js のマイナー、パッチリリースは自動更新する
-      matchManagers: [
-        'nodenv',
-      ],
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      automerge: true,
-    },
-    {
-      // asdf
-      matchManagers: [
-        'asdf',
-      ],
-      matchDatasources: [
-        'node-version',
-      ],
-      matchDepNames: [
-        'node',
-      ],
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      automerge: true,
-    },
-    {
-      // npm version のマイナー、パッチリリースは自動更新する
-      matchManagers: [
-        'npm',
-      ],
-      matchDepTypes: [
-        'packageManager',
-      ],
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      automerge: true,
     },
   ],
 }
