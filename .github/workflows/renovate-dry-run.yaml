@@ -21,6 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: cybozu/renovate-dry-run-action@v2
-        with:
-          config-file: renovate.json5
+      - env:
+          LOG_LEVEL: debug
+          RENOVATE_DRY_RUN: full
+        run: |
+          # ref: https://docs.renovatebot.com/modules/platform/local/
+          npx -y renovate --platform=local | tee ${{ runner.temp }}/renovate.log
+      - name: Output logs to GITHUB_STEP_SUMMARY
+        if: always()
+        run: |
+          echo "## Renovate Dry Run Logs" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`log" >> $GITHUB_STEP_SUMMARY
+          cat renovate.log >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
