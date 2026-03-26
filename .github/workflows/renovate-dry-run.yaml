@@ -20,7 +20,7 @@ jobs:
       pull-requests: read # required by renovate, because renovate to read pull request.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - env:
           LOG_LEVEL: debug
           RENOVATE_DRY_RUN: full
